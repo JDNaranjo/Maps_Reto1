@@ -74,6 +74,7 @@
         android:hint="@string/nombre"
         android:inputType="textPersonName"
         android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -129,17 +130,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="106dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="106dp"
-        android:layout_marginBottom="160dp"
         android:width="199sp"
         android:height="52sp"
         android:background="@drawable/btnregistrar"
         android:backgroundTint="#F44336"
         android:text="@string/registrar"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photosViewList" />
 
     <TextView
         android:id="@+id/textView6"
@@ -165,5 +166,14 @@
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/locationBtn"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/photosViewList"
+        android:layout_width="228dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/addBtn"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 package co.jdn.reto1.model;
 
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +24,7 @@ public class PlaceView extends RecyclerView.ViewHolder{
         name = root.findViewById(R.id.nameLbl);
         rating = root.findViewById(R.id.ratingLbl);
         star = root.findViewById(R.id.imageView2);
-        photo = root.findViewById(R.id.photoView);
+        photo = root.findViewById(R.id.photosViewList);
         visibility = root.findViewById(R.id.visibilityBtn);
     }
 

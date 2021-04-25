@@ -1,6 +1,7 @@
 package co.jdn.reto1.model;
 
 import android.media.Image;
+import android.net.Uri;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -9,9 +10,9 @@ public class Place {
     private String name;
     private LatLng position;
     private String address;
-    private String photo;
+    private Uri photo;
 
-    public Place(String name, LatLng position, String address, String photo) {
+    public Place(String name, LatLng position, String address, Uri photo) {
         this.name = name;
         this.position = position;
         this.address = address;
@@ -42,11 +43,11 @@ public class Place {
         this.address = address;
     }
 
-    public String getPhoto() {
+    public Uri getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(Uri photo) {
         this.photo = photo;
     }
 }

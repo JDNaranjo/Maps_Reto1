@@ -7,7 +7,7 @@
     android:background="#242424">
 
     <ImageView
-        android:id="@+id/photoView"
+        android:id="@+id/photosViewList"
         android:layout_width="64sp"
         android:layout_height="64sp"
         android:layout_marginStart="18dp"
@@ -31,7 +31,7 @@
         android:textSize="18sp"
         app:flow_horizontalAlign="center"
         app:flow_verticalAlign="center"
-        app:layout_constraintStart_toEndOf="@+id/photoView"
+        app:layout_constraintStart_toEndOf="@+id/photosViewList"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -48,7 +48,7 @@
         app:flow_horizontalAlign="center"
         app:flow_verticalAlign="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/photoView"
+        app:layout_constraintStart_toEndOf="@+id/photosViewList"
         app:layout_constraintTop_toBottomOf="@+id/nameLbl" />
 
     <ImageView
