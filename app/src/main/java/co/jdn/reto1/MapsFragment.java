@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,6 +28,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
+import co.jdn.reto1.model.Place;
+
 public class MapsFragment extends Fragment {
 
     private GoogleMap myMap;
@@ -39,6 +44,8 @@ public class MapsFragment extends Fragment {
 
     SharedPreferences preferences;
     private Context context;
+
+    private ArrayList<Place> places;
 
     View root;
 
@@ -140,5 +147,9 @@ public class MapsFragment extends Fragment {
         if (popupWindow.isShowing())
             popupWindow.dismiss();
         super.onStop();
+    }
+
+    public void setPlaces(ArrayList<Place> places) {
+        this.places = places;
     }
 }

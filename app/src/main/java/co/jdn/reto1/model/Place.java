@@ -5,14 +5,16 @@ import android.net.Uri;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
+
 public class Place {
 
     private String name;
     private LatLng position;
     private String address;
-    private Uri photo;
+    private ArrayList<Uri> photo;
 
-    public Place(String name, LatLng position, String address, Uri photo) {
+    public Place(String name, LatLng position, String address, ArrayList<Uri> photo) {
         this.name = name;
         this.position = position;
         this.address = address;
@@ -43,11 +45,11 @@ public class Place {
         this.address = address;
     }
 
-    public Uri getPhoto() {
+    public ArrayList<Uri> getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Uri photo) {
+    public void setPhoto(ArrayList<Uri> photo) {
         this.photo = photo;
     }
 }

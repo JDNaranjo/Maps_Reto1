@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,10 +31,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import co.jdn.reto1.model.PhotoAdapter;
+import co.jdn.reto1.model.Place;
 
 import static androidx.core.content.ContextCompat.checkSelfPermission;
 
@@ -59,6 +65,9 @@ public class NewPlaceFragment extends Fragment {
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1001;
 
+    ArrayList<Place> places;
+    ArrayList<Uri> uris;
+
     public NewPlaceFragment() {
         // Required empty public constructor
     }
@@ -74,6 +83,9 @@ public class NewPlaceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_new_place, container, false);
+
+        places = new ArrayList<>();
+        uris = new ArrayList<>();
 
         context = this.getContext();
         preferences = context.getSharedPreferences("Reto1", Context.MODE_PRIVATE);
@@ -137,6 +149,25 @@ public class NewPlaceFragment extends Fragment {
             }
         });
 
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = nameTxt.getText().toString();
+                double lat = (double) preferences.getFloat("Lat", 0);
+                double lng = (double) preferences.getFloat("Lng", 0);
+                String address = addressTxt.getText().toString();
+
+                Place newPlace = new Place(name, new LatLng(lat, lng),address, uris);
+                places.add(newPlace);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                MapsFragment mapsFragment = new MapsFragment();
+                mapsFragment.setPlaces(places);
+                transaction.replace(R.id.fragmentContainer, mapsFragment);
+                transaction.commit();
+            }
+        });
+
         return root;
     }
 
@@ -173,6 +204,8 @@ public class NewPlaceFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (resultCode == getActivity().RESULT_OK && requestCode == IMAGE_PICK_CODE){
             photoAdapter.addPhoto(data.getData());
+            Uri uri = Uri.parse(data.getData().toString());
+            uris.add(uri);
         }
     }
 }
