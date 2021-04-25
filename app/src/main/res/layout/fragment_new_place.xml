@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#242424" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="121dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="121dp"
+        android:width="169sp"
+        android:height="48sp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/agregar_un_sitio"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lineHeight="28sp"
+        tools:text="Agregar un sitio" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="44dp"
+        android:width="323sp"
+        android:height="35sp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/en_esta_seccion_puede_inscribir_un_sitio_de_la_ciudad_nombre_el_lugar_y_luego_con_el_boton_de_mapa_seleccione_un_punto_en_el_mapa"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:lineHeight="12sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="36dp"
+        android:width="116sp"
+        android:height="18sp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/datos"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:lineHeight="16sp" />
+
+    <EditText
+        android:id="@+id/nameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="58dp"
+        android:width="295sp"
+        android:height="52sp"
+        android:autofillHints=""
+        android:background="@drawable/txtbox"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/nombre"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageButton
+        android:id="@+id/locationBtn"
+        style="@android:style/Widget.Material.Light.ImageButton"
+        android:layout_width="84sp"
+        android:layout_height="81sp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="@string/locationpin"
+        android:cropToPadding="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ping"
+        android:tint="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="40dp"
+        android:width="116sp"
+        android:height="18sp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/imagenes"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationBtn" />
+
+    <ImageButton
+        android:id="@+id/addBtn"
+        style="@android:style/Widget.ImageButton"
+        android:layout_width="64sp"
+        android:layout_height="64sp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="@string/add"
+        android:scaleType="centerInside"
+        android:src="@drawable/add"
+        android:tint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="160dp"
+        android:width="199sp"
+        android:height="52sp"
+        android:background="@drawable/btnregistrar"
+        android:backgroundTint="#F44336"
+        android:text="@string/registrar"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto"
+        android:text=" Direccion del sitio seleccionado"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/locationBtn"
+        app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
+
+    <TextView
+        android:id="@+id/addressTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:fontFamily="@font/roboto"
+        android:text="Not found"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/locationBtn"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Reto1</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="agregar_un_sitio">Agregar un sitio</string>
+    <string name="en_esta_seccion_puede_inscribir_un_sitio_de_la_ciudad_nombre_el_lugar_y_luego_con_el_boton_de_mapa_seleccione_un_punto_en_el_mapa">En esta seccion puede inscribir un sitio de la ciudad. Nombre el lugar y luego con el boton de mapa, seleccione un punto en el mapa</string>
+    <string name="datos">Datos</string>
+    <string name="name">Nombre</string>
+    <string name="pinlocation">PinLocation</string>
+    <string name="nombre">Nombre</string>
+    <string name="imagenes">Imagenes</string>
+    <string name="add">add</string>
+    <string name="registrar">Registrar</string>
+    <string name="locationpin">LocationPin</string>
+</resources>
