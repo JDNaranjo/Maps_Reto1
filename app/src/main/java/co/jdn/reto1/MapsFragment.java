@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.ArraySet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Set;
 
 import co.jdn.reto1.model.Place;
 
@@ -45,7 +48,7 @@ public class MapsFragment extends Fragment {
     SharedPreferences preferences;
     private Context context;
 
-    private ArrayList<Place> places;
+    private Set<String> places;
 
     View root;
 
@@ -71,6 +74,16 @@ public class MapsFragment extends Fragment {
             myMarker = myMap.addMarker(new MarkerOptions().position(pos));
             myMarker.setVisible(false);
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pos, 12.0f));
+
+            if (!places.isEmpty()){
+                for (String place : places){
+                    String[] position = place.split(",");
+                    double lat = Double.parseDouble(position[0]);
+                    double lng = Double.parseDouble(position[1]);
+                    LatLng latlng = new LatLng(lat, lng);
+                    myMap.addMarker(new MarkerOptions().position(latlng));
+                }
+            }
 
             myMap.setOnMapLongClickListener(latLng -> {
                 myMarker.setPosition(latLng);
@@ -98,6 +111,8 @@ public class MapsFragment extends Fragment {
         popupView = getActivity().getLayoutInflater().inflate(R.layout.select_place, null);
         popupWindow = new PopupWindow(popupView, 800, 150);
         preferences = context.getSharedPreferences("Reto1", Context.MODE_PRIVATE);
+
+        places = preferences.getStringSet("positions", new ArraySet<>());
 
         button = popupView.findViewById(R.id.button);
         button.setVisibility(View.INVISIBLE);
@@ -149,7 +164,4 @@ public class MapsFragment extends Fragment {
         super.onStop();
     }
 
-    public void setPlaces(ArrayList<Place> places) {
-        this.places = places;
-    }
 }

@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.ArraySet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import co.jdn.reto1.model.PhotoAdapter;
 import co.jdn.reto1.model.Place;
@@ -65,8 +67,10 @@ public class NewPlaceFragment extends Fragment {
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1001;
 
-    ArrayList<Place> places;
-    ArrayList<Uri> uris;
+    Set<String> names;
+    Set<String> positions;
+    Set<String> addresses;
+    Set<String> uris;
 
     public NewPlaceFragment() {
         // Required empty public constructor
@@ -84,11 +88,13 @@ public class NewPlaceFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_new_place, container, false);
 
-        places = new ArrayList<>();
-        uris = new ArrayList<>();
-
         context = this.getContext();
         preferences = context.getSharedPreferences("Reto1", Context.MODE_PRIVATE);
+
+        names = preferences.getStringSet("names", new ArraySet<>());
+        positions = preferences.getStringSet("positions", new ArraySet<>());
+        addresses = preferences.getStringSet("addresses", new ArraySet<>());
+        uris = preferences.getStringSet("uris", new ArraySet<>());
 
         geocoder = new Geocoder(context);
 
@@ -157,12 +163,17 @@ public class NewPlaceFragment extends Fragment {
                 double lng = (double) preferences.getFloat("Lng", 0);
                 String address = addressTxt.getText().toString();
 
-                Place newPlace = new Place(name, new LatLng(lat, lng),address, uris);
-                places.add(newPlace);
+                names.add(name);
+                positions.add(lat+","+lng);
+                addresses.add(address);
+
+                preferences.edit().putStringSet("names", names)
+                                    .putStringSet("positions", positions)
+                                    .putStringSet("addresses", addresses)
+                                    .putStringSet("uris", uris).apply();
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 MapsFragment mapsFragment = new MapsFragment();
-                mapsFragment.setPlaces(places);
                 transaction.replace(R.id.fragmentContainer, mapsFragment);
                 transaction.commit();
             }
@@ -204,7 +215,7 @@ public class NewPlaceFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (resultCode == getActivity().RESULT_OK && requestCode == IMAGE_PICK_CODE){
             photoAdapter.addPhoto(data.getData());
-            Uri uri = Uri.parse(data.getData().toString());
+            String uri = data.getData().toString();
             uris.add(uri);
         }
     }
