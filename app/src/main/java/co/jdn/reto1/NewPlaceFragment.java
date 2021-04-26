@@ -71,6 +71,8 @@ public class NewPlaceFragment extends Fragment {
     Set<String> positions;
     Set<String> addresses;
     Set<String> uris;
+    Set<String> uriQuantity;
+    private int ite;
 
     public NewPlaceFragment() {
         // Required empty public constructor
@@ -95,6 +97,8 @@ public class NewPlaceFragment extends Fragment {
         positions = preferences.getStringSet("positions", new ArraySet<>());
         addresses = preferences.getStringSet("addresses", new ArraySet<>());
         uris = preferences.getStringSet("uris", new ArraySet<>());
+        uriQuantity = preferences.getStringSet("uriQuantity", new ArraySet<>());
+        ite = 0;
 
         geocoder = new Geocoder(context);
 
@@ -166,11 +170,13 @@ public class NewPlaceFragment extends Fragment {
                 names.add(name);
                 positions.add(lat+","+lng);
                 addresses.add(address);
+                uriQuantity.add(ite+"");
 
                 preferences.edit().putStringSet("names", names)
                                     .putStringSet("positions", positions)
                                     .putStringSet("addresses", addresses)
-                                    .putStringSet("uris", uris).apply();
+                                    .putStringSet("uris", uris)
+                                    .putStringSet("uriQuantity", uriQuantity).apply();
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 MapsFragment mapsFragment = new MapsFragment();
@@ -215,6 +221,7 @@ public class NewPlaceFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (resultCode == getActivity().RESULT_OK && requestCode == IMAGE_PICK_CODE){
             photoAdapter.addPhoto(data.getData());
+            ite++;
             String uri = data.getData().toString();
             uris.add(uri);
         }

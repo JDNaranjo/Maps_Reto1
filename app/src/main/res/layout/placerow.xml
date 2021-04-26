@@ -29,8 +29,6 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:flow_horizontalAlign="center"
-        app:flow_verticalAlign="center"
         app:layout_constraintStart_toEndOf="@+id/photosViewList"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,8 +43,6 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:flow_horizontalAlign="center"
-        app:flow_verticalAlign="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/photosViewList"
         app:layout_constraintTop_toBottomOf="@+id/nameLbl" />
@@ -58,11 +54,12 @@
         android:layout_marginTop="49dp"
         android:layout_marginBottom="17dp"
         android:foregroundTint="#FFFFFF"
-        android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ratingLbl"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/star" />
+        tools:srcCompat="@drawable/star"
+        android:contentDescription="TODO"
+        app:tint="#FFFFFF" />
 
     <ImageButton
         android:id="@+id/visibilityBtn"

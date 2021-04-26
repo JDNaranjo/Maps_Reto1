@@ -42,7 +42,8 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlaceView> {
     //Change the info from the RecyclerView rows
     @Override
     public void onBindViewHolder(@NonNull PlaceView holder, int position) {
-
+        holder.getPhoto().setImageURI(places.get(position).getPhoto().get(0));
+        holder.getName().setText(places.get(position).getName());
     }
 
     @Override
